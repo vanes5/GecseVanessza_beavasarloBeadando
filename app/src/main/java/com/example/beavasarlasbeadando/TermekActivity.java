@@ -99,7 +99,7 @@ public class TermekActivity extends AppCompatActivity {
 
     private void updateProduct() {
         if (!checkAll()) {
-            return; // Don't proceed if fields are empty
+            return;
         }
         String nev = nevEditText.getText().toString();
         String mertekegyseg = mertekegysegEditText.getText().toString();
@@ -134,28 +134,22 @@ public class TermekActivity extends AppCompatActivity {
     }
 
 private void fetchProductDetails(int productId) {
-    // Ensure apiService is initialized properly
     if (apiService != null) {
         apiService.getTermekById(productId).enqueue(new Callback<Termekek>() {
             @Override
             public void onResponse(Call<Termekek> call, Response<Termekek> response) {
                 Log.d("API", "Request URL: " + call.request().url().toString());
                 if (response.isSuccessful()) {
-                    // Handle the successful response
                     Termekek termek = response.body();
                     if (termek != null) {
-                        // Process the product
                         Log.d("API", "Product fetched successfully: " + termek.getNev());
-                        // Use the data as required (e.g., update the UI, save data, etc.)
                     } else {
                         Log.e("API", "Response body is null");
                         Toast.makeText(getApplicationContext(), "No product data received", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    // Handle unsuccessful response
                     Log.e("API", "Request failed with status code: " + response.code());
                     try {
-                        // Log the error body if possible
                         Log.e("API", "Error body: " + response.errorBody().string());
                     } catch (IOException e) {
                         Log.e("API", "Failed to parse error body", e);
@@ -166,13 +160,11 @@ private void fetchProductDetails(int productId) {
 
             @Override
             public void onFailure(Call<Termekek> call, Throwable t) {
-                // Handle failure of the network request
                 Log.e("API", "Network request failed: " + t.getMessage(), t);
                 Toast.makeText(getApplicationContext(), "Network error!", Toast.LENGTH_SHORT).show();
             }
         });
     } else {
-        // Log if apiService is null
         Log.e("API", "API service is null. Check Retrofit setup.");
         Toast.makeText(getApplicationContext(), "API service is not initialized", Toast.LENGTH_SHORT).show();
     }
