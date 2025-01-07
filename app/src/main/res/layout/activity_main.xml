@@ -6,11 +6,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal">
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Név"
+        android:inputType="text"
+        android:id="@+id/nevEditText"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Egységár"
+        android:inputType="number"
+        android:id="@+id/egysegarEditText"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mennyiség"
+        android:inputType="numberDecimal"
+        android:id="@+id/mennyisegEditText"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mértékegység"
+        android:inputType="text"
+        android:id="@+id/mertekegysegEditText"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hozzádadás"
+        android:textSize="20dp"
+        android:id="@+id/buttonHozzaad"/>
 
 
 
