@@ -1,6 +1,7 @@
 package com.example.beavasarlasbeadando;
 
 public class Termekek {
+    private int id;
     private String nev;
     private int egysegAr;
     private float mennyiseg;
@@ -13,6 +14,14 @@ public class Termekek {
         this.mennyiseg = mennyiseg;
         this.mertekegyseg = mertekegyseg;
         this.bruttoAr = (double) Math.round((this.egysegAr*this.mennyiseg)*100)/100;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNev() {
